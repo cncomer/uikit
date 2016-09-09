@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="uik_ratio" format="reference|float" />
+
+    <declare-styleable name="Banner">
+        <attr name="uik_scrollInterval" format="reference|integer" />
+        <attr name="uik_autoScroll" format="reference|boolean" />
+        <attr name="uik_ratio"/>
+    </declare-styleable>
+
+    <declare-styleable name="BrickLayout">
+        <attr name="brickMaxLines" format="reference|integer" />
+        <attr name="brickGap" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="FeatureNameSpace">
+        <attr name="uik_autoScaleFeature" format="reference|boolean" />
+        <attr name="uik_binaryPageFeature" format="reference|boolean" />
+        <attr name="bounceScrollFeature" format="reference|boolean" />
+        <attr name="cellAnimatorFeature" format="reference|boolean" />
+        <attr name="clickDrawableMaskFeature" format="reference|boolean" />
+        <attr name="clickViewMaskFeature" format="reference|boolean" />
+        <attr name="dragToRefreshFeature" format="reference|boolean" />
+        <attr name="imageShapeFeature" format="reference|boolean" />
+        <attr name="imagesavefeature" format="reference|boolean" />
+        <attr name="parallaxScrollFeature" format="reference|boolean" />
+        <attr name="pencilShapeFeature" format="reference|boolean" />
+        <attr name="pinnedHeaderFeature" format="reference|boolean" />
+        <attr name="pullToRefreshFeature" format="reference|boolean" />
+        <attr name="ratioFeature" format="reference|boolean" />
+        <attr name="recyclerCellAnimatorFeature" format="reference|boolean" />
+        <attr name="rotateFeature" format="reference|boolean" />
+        <attr name="roundFeature" format="reference|boolean" />
+        <attr name="roundRectFeature" format="reference|boolean" />
+        <attr name="stickyScrollFeature" format="reference|boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RatioFeature">
+        <attr name="uik_orientation" format="reference|integer" />
+        <attr name="uik_ratio"/>
+    </declare-styleable>
+
+</resources>
