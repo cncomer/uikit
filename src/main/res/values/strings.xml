@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UIKIT</string>
+    <string name="msg_progressdialog_wait">正在加载图片，请稍等....</string>
+
 </resources>

@@ -1,14 +1,13 @@
 package com.cncom.app.common.uikit.feature.callback;
 
 /**
- * Created by bestjoy on 16/3/11.
+ * Created by kangyong.lt on 14-4-29.
  */
-public interface ScrollCallback {
-    public void afterComputeScroll();
-
-    public void afterOnScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-
-    public void beforeComputeScroll();
-
-    public void beforeOnScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+public interface ScrollCallback
+{
+    void beforeComputeScroll();
+    void afterComputeScroll();
+    
+    void beforeOnScrollChanged(int l, int t, int oldl, int oldt);
+    void afterOnScrollChanged(int l, int t, int oldl, int oldt);
 }

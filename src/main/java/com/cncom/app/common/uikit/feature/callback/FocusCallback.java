@@ -2,16 +2,14 @@ package com.cncom.app.common.uikit.feature.callback;
 
 import android.graphics.Rect;
 
-/**
- * Created by bestjoy on 16/3/11.
- */
 public interface FocusCallback {
+	void beforeOnFocusChanged(boolean gainFocus, int direction,
+							  Rect previouslyFocusedRect);
 
-    public void afterOnFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect);
+	void afterOnFocusChanged(boolean gainFocus, int direction,
+							 Rect previouslyFocusedRect);
 
-    public void afterOnWindowFocusChanged(boolean gainFocus);
+	void beforeOnWindowFocusChanged(boolean hasWindowFocus);
 
-    public void beforeOnFocusChanged(boolean gainFocus, int direction, Rect previouslyFocusedRect);
-
-    public void beforeOnWindowFocusChanged(boolean gainFocus);
+	void afterOnWindowFocusChanged(boolean hasWindowFocus);
 }

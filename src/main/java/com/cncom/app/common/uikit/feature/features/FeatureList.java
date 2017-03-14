@@ -1,5 +1,6 @@
 package com.cncom.app.common.uikit.feature.features;
 
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
@@ -12,76 +13,92 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/**
- * Created by bestjoy on 16/3/16.
- */
-public class FeatureList<T extends View> extends ArrayList<AbsFeature<? super T>>
-        implements IFeatureList<T>, Comparator<AbsFeature<? super T>> {
+public class FeatureList<T extends View> extends
+		ArrayList<AbsFeature<? super T>> implements
+		Comparator<AbsFeature<? super T>>, IFeatureList<T> {
 
-    private static final long serialVersionUID = 5539018560951385305L;
-    private T mHost;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5539018560951385305L;
 
-    public FeatureList(T view) {
-        this.mHost = view;
-    }
+	private T mHost;
 
-    public boolean add(AbsFeature<? super T> absFeature) {
-        for( AbsFeature _absFeature: this) {
-            if (TextUtils.equals(_absFeature.getClass().getName(), absFeature.getClass().getName())) {
-                throw new RuntimeException(_absFeature.getClass().getName() + " already add to this view");
-            }
-        }
-        boolean added = super.add(absFeature);
-        Collections.sort(this, this);
-        return added;
-    }
+	public FeatureList(T host) {
+		mHost = host;
+	}
 
-    public boolean addFeature(AbsFeature<? super T> absFeature) {
-        if (absFeature != null) {
-            absFeature.setHost(this.mHost);
-            return add(absFeature);
-        }
-        return false;
-    }
+	@Override
+	public boolean add(AbsFeature<? super T> object) {
+		for (AbsFeature<? super T> feature : this) {
+			if (TextUtils.equals(feature.getClass().getName(), object
+					.getClass().getName())) {
+				throw new RuntimeException(feature.getClass().getName()
+						+ " already add to this view");
+			}
+		}
 
-    public void clearFeatures() {
-        clear();
-        this.mHost.requestLayout();
-    }
+		boolean ret = super.add(object);
 
-    public int compare(AbsFeature<? super T> absFeature1, AbsFeature<? super T> absFeature2) {
-        return (FeatureFactory.getFeaturePriority(absFeature1.getClass().getSimpleName()) - FeatureFactory.getFeaturePriority(absFeature2.getClass().getSimpleName()));
-    }
+		Collections.sort(this, this);
+		return ret;
+	}
 
-    public AbsFeature<? super T> findFeature(Class<? extends AbsFeature<? super T>> featureClass) {
-        for( AbsFeature _absFeature: this) {
-            if (_absFeature.getClass() == featureClass) {
-               return _absFeature;
-            }
-        }
-        return null;
-    }
+	@Override
+	public int compare(AbsFeature<? super T> lhs, AbsFeature<? super T> rhs) {
+		return FeatureFactory
+				.getFeaturePriority(lhs.getClass().getSimpleName())
+				- FeatureFactory.getFeaturePriority(rhs.getClass()
+						.getSimpleName());
+	}
 
-    public void init(Context context, AttributeSet attributeSet, int defStyleAttr) {
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.FeatureNameSpace);
-        if (typedArray != null) {
-            ArrayList<AbsFeature<? super T>> absFeatureList = FeatureFactory.creator(this.mHost.getContext(), typedArray);
-            for(AbsFeature<? super T> absFeature : absFeatureList) {
-                absFeature.constructor(context, attributeSet, defStyleAttr);
-                addFeature(absFeature);
+	public void init(Context context, AttributeSet attrs, int defStyle) {
+		TypedArray typedArray = context.obtainStyledAttributes(attrs,
+				R.styleable.FeatureNameSpace);
+		if (typedArray != null) {
+            ArrayList<AbsFeature<? super T>> features = FeatureFactory.creator(mHost.getContext(), typedArray);
 
-            }
-            typedArray.recycle();
-        }
-    }
+			for (AbsFeature<? super T> feature : features) {
+				addFeature(feature);
+				feature.constructor(context, attrs, defStyle);
+			}
 
-    public boolean removeFeature(Class<? extends AbsFeature<? super T>> paramClass) {
-        int i = size();
-        for (int j = 0; j < i; ++j) {
-            AbsFeature localAbsFeature = (AbsFeature) get(j);
-            if (localAbsFeature.getClass() == paramClass)
-                return remove(localAbsFeature);
-        }
-        return false;
-    }
+			typedArray.recycle();
+		}
+	}
+
+	@Override
+	public boolean addFeature(AbsFeature<? super T> feature) {
+		if (feature != null) {
+			feature.setHost(mHost);
+			return this.add(feature);
+		}
+		return false;
+	}
+
+	@Override
+	public AbsFeature<? super T> findFeature(Class<? extends AbsFeature<? super T>> clazz) {
+		for (AbsFeature<? super T> feature : this) {
+			if (feature.getClass() == clazz) {
+				return feature;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean removeFeature(Class<? extends AbsFeature<? super T>> clazz) {
+		for (AbsFeature<? super T> feature : this) {
+			if (feature.getClass() == clazz) {
+				return this.remove(feature);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void clearFeatures() {
+		this.clear();
+		mHost.requestLayout();
+	}
 }

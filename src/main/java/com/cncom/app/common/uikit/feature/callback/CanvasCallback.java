@@ -3,18 +3,19 @@ package com.cncom.app.common.uikit.feature.callback;
 import android.graphics.Canvas;
 
 /**
- * Created by bestjoy on 16/3/11.
+ * Created by kangyong.lt on 14-4-15.
  */
-public interface CanvasCallback {
-    public void afterDispatchDraw(Canvas canvas);
+public interface CanvasCallback
+{
+    void beforeDraw(Canvas canvas);
 
-    public void afterDraw(Canvas canvas);
+    void afterDraw(Canvas canvas);
 
-    public void afterOnDraw(Canvas canvas);
+    void beforeDispatchDraw(Canvas canvas);
 
-    public void beforeDispatchDraw(Canvas canvas);
+    void afterDispatchDraw(Canvas canvas);
 
-    public void beforeDraw(Canvas canvas);
+    void beforeOnDraw(Canvas canvas);
 
-    public void beforeOnDraw(Canvas canvas);
+    void afterOnDraw(Canvas canvas);
 }

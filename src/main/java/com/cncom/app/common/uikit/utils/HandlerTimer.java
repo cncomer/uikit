@@ -17,8 +17,10 @@ public class HandlerTimer implements Runnable {
     }
 
     public HandlerTimer(long interval, Runnable task, Handler handler) {
-        if ((handler == null) || (task == null))
+        if ((handler == null) || (task == null)) {
             throw new NullPointerException("handler or task must not be null");
+        }
+
         this.interval = interval;
         this.task = task;
         this.handler = handler;
@@ -48,17 +50,20 @@ public class HandlerTimer implements Runnable {
     public final void run() {
         if ((this.status == TimerStatus.Waiting)
                 || (this.status == TimerStatus.Paused)
-                || (this.status == TimerStatus.Stopped))
+                || (this.status == TimerStatus.Stopped)) {
             return;
+        }
+
         this.task.run();
-        this.handler.removeCallbacks(this);
         this.handler.postDelayed(this, this.interval);
     }
 
     public void start() {
-        this.handler.removeCallbacks(this);
-        this.status = TimerStatus.Running;
-        this.handler.postDelayed(this, this.interval);
+        if (this.status != TimerStatus.Running) {
+            handler.removeCallbacks(this);
+            this.status = TimerStatus.Running;
+            handler.postDelayed(this, interval);
+        }
     }
 
     public void start(long interval) {
@@ -72,16 +77,16 @@ public class HandlerTimer implements Runnable {
         this.handler.removeCallbacks(this);
     }
 
-    static enum TimerStatus {
+    enum TimerStatus {
         Waiting("Waiting", 0, "等待"),
         Running("Running", 1,  "运行中"),
-        Paused("Paused", 2, "暂停"),
-        Stopped("Stopped", 3, "停止");
+        Paused("Paused", -1, "暂停"),
+        Stopped("Stopped", -2, "停止");
 
         private int code;
         private String desc;
         private String desc_en;
-        private TimerStatus(String desc_en, int code, String desc) {
+        TimerStatus(String desc_en, int code, String desc) {
             this.code = code;
             this.desc = desc;
             this.desc_en = desc_en;

@@ -29,17 +29,21 @@ public class RatioFeature extends AbsFeature<View>
         if (this.mRatio > 0F) {
             int heightSpecSize = 0;
             int widthSpecSize = 0;
-            boolean supportOrientation = true;
+            //int pleft = getHost().getPaddingLeft();
+            //int pright = getHost().getPaddingRight();
+            //int ptop = getHost().getPaddingTop();
+            //int pbottom = getHost().getPaddingBottom();
+            boolean shouldSet = false;
             if (this.mOrientation == HORIZONTAL) {
                 widthSpecSize = View.MeasureSpec.getSize(widthMeasureSpec);
                 heightSpecSize = (int) (widthSpecSize * this.mRatio);
+                shouldSet = true;
             } else if (this.mOrientation == VERTICAL) {
                 heightSpecSize = View.MeasureSpec.getSize(heightMeasureSpec);
                 widthSpecSize = (int) (heightSpecSize * this.mRatio);
-            } else {
-                supportOrientation = false;
+                shouldSet = true;
             }
-            if (supportOrientation && getHost() instanceof ViewHelper) {
+            if (shouldSet && getHost() instanceof ViewHelper) {
                 ((ViewHelper) getHost()).setMeasuredDimension(widthSpecSize, heightSpecSize);
             }
         }
@@ -51,11 +55,11 @@ public class RatioFeature extends AbsFeature<View>
 
     public void constructor(Context context, AttributeSet attributeSet, int defStyleRes) {
         if (attributeSet != null) {
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.RatioFeature);
-            if (typedArray != null) {
-                this.mRatio = typedArray.getFloat(R.styleable.RatioFeature_uik_ratio, sDefaultRatio);
-                this.mOrientation = typedArray.getInt(R.styleable.RatioFeature_uik_orientation, HORIZONTAL);
-                typedArray.recycle();
+            TypedArray a = context.obtainStyledAttributes(attributeSet, R.styleable.RatioFeature);
+            if (null != a) {
+                this.mRatio = a.getFloat(R.styleable.RatioFeature_uik_ratio, sDefaultRatio);
+                this.mOrientation = a.getInt(R.styleable.RatioFeature_uik_orientation, HORIZONTAL);
+                a.recycle();
             }
         }
     }

@@ -3,14 +3,16 @@ package com.cncom.app.common.uikit.feature.callback;
 import android.view.MotionEvent;
 
 /**
- * Created by bestjoy on 16/3/11.
+ * Created by kangyong.lt on 14-4-15.
  */
-public interface TouchEventCallback {
-    public void afterDispatchTouchEvent(MotionEvent motionEvent);
+public interface TouchEventCallback
+{
+    void beforeOnTouchEvent(MotionEvent event);
 
-    public void afterOnTouchEvent(MotionEvent motionEvent);
+    void afterOnTouchEvent(MotionEvent event);
 
-    public void beforeDispatchTouchEvent(MotionEvent motionEvent);
+    void beforeDispatchTouchEvent(MotionEvent event);
 
-    public void beforeOnTouchEvent(MotionEvent motionEvent);
+    void afterDispatchTouchEvent(MotionEvent event);
+    
 }

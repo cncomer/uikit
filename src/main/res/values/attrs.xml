@@ -1,43 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="uik_fastEnable" format="boolean" />
+    <attr name="uik_fastColor" format="reference|color" />
+    <attr name="uik_shadowHeight" format="dimension" />
+    <attr name="uik_shadowDrawable" format="reference" />
+    <attr name="uik_strokeWidth" format="dimension" />
+    <attr name="uik_strokeColor" format="reference|color" />
+    <attr name="uik_radiusX" format="dimension" />
+    <attr name="uik_radiusY" format="dimension" />
+    <attr name="uik_radius" format="dimension" />
     <attr name="uik_ratio" format="reference|float" />
-
-    <declare-styleable name="Banner">
-        <attr name="uik_scrollInterval" format="reference|integer" />
-        <attr name="uik_autoScroll" format="reference|boolean" />
-        <attr name="uik_ratio"/>
-    </declare-styleable>
+    <attr name="uik_orientation">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+    <attr name="uik_clickMaskEnable" format="boolean" />
+    <attr name="uik_clickMaskColor" format="color" />
 
     <declare-styleable name="BrickLayout">
         <attr name="brickMaxLines" format="reference|integer" />
         <attr name="brickGap" format="reference|dimension" />
     </declare-styleable>
 
+    <declare-styleable name="IndicatorView">
+        <attr name="uik_indicatorRadius" format="dimension" />
+        <attr name="uik_gapMargin" format="dimension" />
+        <attr name="uik_total" format="integer" />
+        <attr name="uik_index" format="integer" />
+        <attr name="uik_focusColor" format="reference|color" />
+        <attr name="uik_unfocusColor" format="reference|color" />
+        <attr name="uik_strokeColor" />
+        <attr name="uik_strokeWidth" />
+    </declare-styleable>
+
+    <declare-styleable name="Banner">
+        <attr name="uik_autoScrollInterval" format="integer" />
+        <attr name="uik_autoScroll" format="boolean" />
+        <attr name="uik_ratio" />
+    </declare-styleable>
+
     <declare-styleable name="FeatureNameSpace">
         <attr name="uik_autoScaleFeature" format="reference|boolean" />
         <attr name="uik_binaryPageFeature" format="reference|boolean" />
-        <attr name="bounceScrollFeature" format="reference|boolean" />
-        <attr name="cellAnimatorFeature" format="reference|boolean" />
-        <attr name="clickDrawableMaskFeature" format="reference|boolean" />
-        <attr name="clickViewMaskFeature" format="reference|boolean" />
-        <attr name="dragToRefreshFeature" format="reference|boolean" />
-        <attr name="imageShapeFeature" format="reference|boolean" />
-        <attr name="imagesavefeature" format="reference|boolean" />
-        <attr name="parallaxScrollFeature" format="reference|boolean" />
-        <attr name="pencilShapeFeature" format="reference|boolean" />
-        <attr name="pinnedHeaderFeature" format="reference|boolean" />
-        <attr name="pullToRefreshFeature" format="reference|boolean" />
-        <attr name="ratioFeature" format="reference|boolean" />
-        <attr name="recyclerCellAnimatorFeature" format="reference|boolean" />
-        <attr name="rotateFeature" format="reference|boolean" />
-        <attr name="roundFeature" format="reference|boolean" />
-        <attr name="roundRectFeature" format="reference|boolean" />
-        <attr name="stickyScrollFeature" format="reference|boolean" />
+        <attr name="uik_bounceScrollFeature" format="reference|boolean" />
+        <attr name="uik_cellAnimatorFeature" format="reference|boolean" />
+        <attr name="uik_clickDrawableMaskFeature" format="reference|boolean" />
+        <attr name="uik_clickViewMaskFeature" format="reference|boolean" />
+        <attr name="uik_dragToRefreshFeature" format="reference|boolean" />
+        <attr name="uik_imageShapeFeature" format="reference|boolean" />
+        <attr name="uik_imagesavefeature" format="reference|boolean" />
+        <attr name="uik_parallaxScrollFeature" format="reference|boolean" />
+        <attr name="uik_pencilShapeFeature" format="reference|boolean" />
+        <attr name="uik_pinnedHeaderFeature" format="reference|boolean" />
+        <attr name="uik_pullToRefreshFeature" format="reference|boolean" />
+        <attr name="uik_ratioFeature" format="reference|boolean" />
+        <attr name="uik_recyclerCellAnimatorFeature" format="reference|boolean" />
+        <attr name="uik_rotateFeature" format="reference|boolean" />
+        <attr name="uik_roundFeature" format="reference|boolean" />
+        <attr name="uik_roundRectFeature" format="reference|boolean" />
+        <attr name="uik_stickyScrollFeature" format="reference|boolean" />
+        <attr name="uik_deletableIconFeature" format="reference|boolean" />
+
     </declare-styleable>
 
     <declare-styleable name="RatioFeature">
-        <attr name="uik_orientation" format="reference|integer" />
+        <attr name="uik_orientation"/>
         <attr name="uik_ratio"/>
     </declare-styleable>
+
+    <declare-styleable name="RotateFeature">
+        <attr name="uik_roundX" format="dimension" />
+        <attr name="uik_roundY" format="dimension" />
+        <attr name="uik_frameEnable" format="boolean" />
+        <attr name="uik_frameColor" format="reference|color" />
+        <attr name="uik_frameWidth" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundRectFeature">
+        <attr name="uik_radiusX" />
+        <attr name="uik_radiusY" />
+        <attr name="uik_strokeEnable" format="boolean" />
+        <attr name="uik_strokeColor" />
+        <attr name="uik_strokeWidth" />
+        <attr name="uik_fastEnable" />
+        <attr name="uik_fastColor" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundFeature">
+        <attr name="uik_shadowDrawable" />
+        <attr name="uik_shadowOffset" format="dimension" />
+        <attr name="uik_fastEnable" />
+        <attr name="uik_fastColor" />
+        <attr name="uik_radius" />
+    </declare-styleable>
+
+    <declare-styleable name="ClickViewMaskFeature">
+        <attr name="uik_clickMaskEnable" />
+        <attr name="uik_clickMaskColor" />
+    </declare-styleable>
+
+    <declare-styleable name="ClickDrawableMaskFeature">
+        <attr name="uik_clickMaskEnable" />
+        <attr name="uik_clickMaskColor" />
+    </declare-styleable>
+
+    <declare-styleable name="StickyScrollFeature">
+        <attr name="uik_shadowDrawable" />
+        <attr name="uik_shadowHeight" />
+    </declare-styleable>
+
+    <declare-styleable name="ParallaxScrollFeature">
+        <attr name="uik_parallaxFactor" format="float" />
+        <attr name="uik_innerParallaxFactor" format="float" />
+        <attr name="uik_parallaxNum" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="BounceScrollFeature">
+        <attr name="uik_maxRatio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="PencilShapeFeature">
+        <attr name="uik_radiusX" />
+        <attr name="uik_radiusY" />
+        <attr name="uik_topRatio" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="AutoScaleFeature">
+        <attr name="uik_minTextSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CellAnimatorFeature">
+        <attr name="uik_initialDelay" format="integer" />
+        <attr name="uik_animatorDelay" format="integer" />
+        <attr name="uik_animatorDuration" format="integer" />
+    </declare-styleable>
+
 
 </resources>

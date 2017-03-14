@@ -1,8 +1,10 @@
 package com.cncom.app.common.uikit.feature.view;
 
+
 /**
- * Created by bestjoy on 16/3/15.
+ * Created by kangyong.lt on 14-4-17.
  */
-public interface ViewHelper {
-    public void setMeasuredDimension(long width, long height);
+public interface ViewHelper
+{
+    void setMeasuredDimension(long width, long height);
 }

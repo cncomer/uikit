@@ -1,9 +1,11 @@
 package com.cncom.app.common.uikit.feature.callback;
 
 /**
- * Created by bestjoy on 16/3/11.
+ * Created by kangyong.lt on 14-4-15.
  */
-public interface LayoutCallback {
-    public void afterOnLayout(boolean changed, int left, int top, int right, int bottom);
-    public void beforeOnLayout(boolean changed, int left, int top, int right, int bottom);
+public interface LayoutCallback
+{
+    void beforeOnLayout(boolean changed, int left, int top, int right, int bottom);
+
+    void afterOnLayout(boolean changed, int left, int top, int right, int bottom);
 }
