@@ -42,6 +42,7 @@ public class SingleTouchImageViewActivity extends AppCompatActivity {
 			finish();
 			return;
 		}
+
 		if (uri.toString().startsWith("http")) {
 			//远程的图片，我们需要下载缓存
 			downloadAndShow(uri);
